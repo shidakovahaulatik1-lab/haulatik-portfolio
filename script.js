@@ -4,12 +4,12 @@ const projects = {
     title: "Вебинар, который ведёт аудиторию к покупке",
     task: "Выстроить материал вебинара так, чтобы аудитория последовательно понимала ценность продукта и логику предложения.",
     result: "За 3 дня выстроена цельная система из 18 слайдов — от 3 дизайн-концепций до финальной подачи, которая последовательно раскрывает ценность продукта и поддерживает продающий сценарий вебинара.",
-    cover: "assets/projects/webinar-cover.jpg",
+    cover: "assets/projects/webinar-cover.png",
     gallery: [
-      "assets/projects/webinar-support-1.jpg",
-      "assets/projects/webinar-support-2.jpg",
-      "assets/projects/webinar-speaker-1.jpg",
-      "assets/projects/webinar-speaker-2.jpg"
+      "assets/projects/webinar-support-1.png",
+      "assets/projects/webinar-support-2.png",
+      "assets/projects/webinar-speaker-1.png",
+      "assets/projects/webinar-speaker-2.png"
     ]
   },
   vibe: {
@@ -17,33 +17,33 @@ const projects = {
     title: "Как показать потенциал идеи инвестору",
     task: "Показать концепцию проекта, его преимущества и потенциал так, чтобы ключевая идея быстро считывалась инвестором.",
     result: "Выстроен визуальный сценарий, в котором идея проекта раскрывается через композицию и анимацию, а ключевые преимущества получают собственные смысловые акценты.",
-    cover: "assets/projects/vibe-cover.jpg",
+    cover: "assets/projects/vibe-cover.png",
     animation: "assets/animations/vibe.gif",
-    gallery: ["assets/projects/vibe-support-1.jpg","assets/projects/vibe-support-2.jpg"]
+    gallery: ["assets/projects/vibe-support-1.png","assets/projects/vibe-support-2.png"]
   },
   investors: {
     label: "Для стартапов и команд",
     title: "Презентация, с которой понятно выходить к инвесторам",
     task: "Собрать продукт и команду в понятную историю, чтобы инвестор быстро видел суть предложения и ценность проекта.",
     result: "За 24 часа разрозненная информация о продукте и команде собрана в компактную презентацию из 6 слайдов с ясной структурой, согласованными текстами и единым визуальным направлением.",
-    cover: "assets/projects/investors-cover.jpg",
-    gallery: ["assets/projects/investors-support-1.jpg","assets/projects/investors-support-2.jpg"]
+    cover: "assets/projects/investors-cover.png",
+    gallery: ["assets/projects/investors-support-1.png","assets/projects/investors-support-2.png"]
   },
   detox: {
     label: "Для экспертов и wellness-проектов",
     title: "Вебинар, который удерживает внимание",
     task: "Адаптировать материал о цифровом детоксе под выступление: выстроить логику, выделить ключевые смыслы и сделать подачу удобной для спикера.",
     result: "За 3 дня переработаны 15 слайдов: усилена структура, создана новая визуальная система и добавлена анимация с Morph-переходами — презентация стала работать как полноценное визуальное сопровождение вебинара, а не просто набор слайдов.",
-    cover: "assets/projects/digital-detox-cover.jpg",
+    cover: "assets/projects/digital-detox-cover.png",
     animation: "assets/animations/digital-detox.gif",
-    gallery: ["assets/projects/digital-detox-support-1.jpg","assets/projects/digital-detox-support-2.jpg"]
+    gallery: ["assets/projects/digital-detox-support-1.png","assets/projects/digital-detox-support-2.png"]
   },
   "alyi-put": {
     label: "Концептуальная презентация",
     title: "Алый Путь",
     task: "",
     result: "",
-    cover: "assets/projects/alyi-put-cover.jpg",
+    cover: "assets/projects/alyi-put-cover.png",
     gallery: []
   },
   animated: {
@@ -51,7 +51,7 @@ const projects = {
     title: "Анимационный проект",
     task: "",
     result: "",
-    cover: "assets/projects/animated-cover.jpg",
+    cover: "assets/projects/animated-cover.png",
     animation: "assets/animations/animated-project.gif",
     gallery: []
   }
@@ -120,8 +120,13 @@ function openProject(id, playAnimation = false) {
   drawerResult.textContent = p.result || "Кейс представлен как визуальная история без выдуманных метрик и результатов.";
   drawerPreview.src = p.cover || "";
   drawerPreview.alt = p.title || "Проект";
-  drawerAnimationBtn.hidden = !p.animation;
+  drawerAnimationBtn.hidden = true;
   drawerAnimationBtn.textContent = "Смотреть анимацию ▶";
+  if (p.animation) {
+    fetch(p.animation, { method: "HEAD" })
+      .then(r => { drawerAnimationBtn.hidden = !r.ok; })
+      .catch(() => { drawerAnimationBtn.hidden = true; });
+  }
 
   drawerGallery.innerHTML = "";
   (p.gallery || []).forEach((src, i) => {
