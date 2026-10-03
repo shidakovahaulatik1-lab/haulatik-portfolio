@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assetsportrait-main.png.png" fetchpriority="high" />
   <link rel="stylesheet" href="styles.css" />
   <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" defer></script>
   <script src="script.js" defer></script>
@@ -40,7 +41,7 @@
         </div>
 
         <figure class="hero-portrait reveal">
-          <img src="assetsportrait-main.png.png" alt="Хаулат Шидакова" />
+          <img src="assetsportrait-main.png.png" alt="Хаулат Шидакова" fetchpriority="high" decoding="async" onload="this.closest('.hero-portrait').classList.add('photo-ready')" />
           <figcaption class="asset-note">Портрет</figcaption>
         </figure>
 
@@ -259,11 +260,48 @@
         <button class="submit-btn" type="submit">ОТПРАВИТЬ ЗАЯВКУ <span>→</span></button>
       </form>
 
-      <div class="contact-links">
-        <a href="tel:+79304440854">+7 930 444-08-54</a>
-        <a href="mailto:shidakova.haulatik1@mail.ru">shidakova.haulatik1@mail.ru</a>
-        <a href="https://t.me/haulatik09" target="_blank" rel="noreferrer">@haulatik09</a>
-        <a href="https://wa.me/79304440854" target="_blank" rel="noreferrer">WhatsApp ↗</a>
+      <div class="contact-cards">
+        <a class="contact-card" href="tel:+79304440854">
+          <div class="contact-card-icon"><iconify-icon icon="solar:phone-linear"></iconify-icon></div>
+          <div class="contact-card-copy">
+            <span class="contact-card-label">Телефон</span>
+            <strong>+7 930 444-08-54</strong>
+            <small>Позвонить</small>
+          </div>
+          <span class="contact-card-arrow">↗</span>
+        </a>
+
+        <a class="contact-card" href="mailto:shidakova.haulatik1@mail.ru">
+          <div class="contact-card-icon"><iconify-icon icon="solar:letter-linear"></iconify-icon></div>
+          <div class="contact-card-copy">
+            <span class="contact-card-label">E-mail</span>
+            <strong>shidakova.haulatik1@mail.ru</strong>
+            <small>Написать письмо</small>
+          </div>
+          <span class="contact-card-arrow">↗</span>
+        </a>
+
+        <a class="contact-card contact-card--qr" href="https://t.me/haulatik09" target="_blank" rel="noreferrer">
+          <div class="contact-card-icon"><iconify-icon icon="logos:telegram"></iconify-icon></div>
+          <div class="contact-card-copy">
+            <span class="contact-card-label">Telegram</span>
+            <strong>@haulatik09</strong>
+            <small>Открыть чат</small>
+          </div>
+          <img class="contact-qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOgAAADoAQAAAADN0pXVAAABQ0lEQVR4nO2YwZLDMAhDn3by/7+sPQCue9geaqdhM80ljHWIGAiSkXnx/LwCv+g/QA9QREZg4emkJ+fFfDGAkJGivfOkKefVfFFkKKyM86Qn522oQf4TvYrVWaiR8FPCDVhtRg/I33V6j6gn59V8cxzLqurqYlan5jtVVcZMJz05r6ByjihZIcFQWtyV8w49GpJb0nQpq1PrO3yVKmdXuXtyXkWdVsNIyPYoeF/Oi6it6maJHFuXszoHFa52tjNnotPbcn4bxSVBj6A0ye7JeUc/Ew1tx50hh1drzkuoFL/v8Fo31d/pehB+Mjyl7jqvpv1GJAsMx9WU86q/GjZDVjnJu87np/2Gh9/K/U5PzrvQWNaFEkWNO7Daix5THEIUd2Dh++7r5r2GHu65K+fVfCfNDdMxLsU9OW/S349+94t+Bv0FveOBytP+xoMAAAAASUVORK5CYII=" alt="QR-код Telegram @haulatik09">
+          <span class="contact-card-arrow">↗</span>
+        </a>
+
+        <a class="contact-card contact-card--qr" href="https://wa.me/79304440854" target="_blank" rel="noreferrer">
+          <div class="contact-card-icon"><iconify-icon icon="logos:whatsapp-icon"></iconify-icon></div>
+          <div class="contact-card-copy">
+            <span class="contact-card-label">WhatsApp</span>
+            <strong>+7 930 444-08-54</strong>
+            <small>Открыть чат</small>
+          </div>
+          <img class="contact-qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOgAAADoAQAAAADN0pXVAAABPUlEQVR4nO2YS47DMAxDH4vc/8qchfxJBoNulNQao0XQuuYiJCjJkmXefF7vwC/6D1DcDTbG8QyoJucMekDoE2AZ+bRTk3NWLwqFwmrmtp2anG9Cu1L/ia5idTN6zKUwv6p1Tc5pvaHSyLI8d4pyzupVLOXxq8WsnkPl6/qSvkU5J/UOP3t1lpEFLso5ibo9DuGSUTuQynLOoQILDX+FsXftN0QEb8/lCG+tZPVwPMtGAkUgh73b9lcRxc1bGRx5vGX+xnwUPYZ7PPfFhvPRi5DsMLWpl3edF2Lk7R6fAhu8o7/HSaRPpXotq4fPI2COg9DCWTv2V5f7jXb0zo2anNPzoBiNc+sl2bVeHZd/Gpkcx3JNzjfpdb+vmwNwTc5pveeR17NOV+Wc1TvuNxTfHh7X5Jyc95e894t+Bv0B93aOrLCQI8QAAAAASUVORK5CYII=" alt="QR-код WhatsApp">
+          <span class="contact-card-arrow">↗</span>
+        </a>
       </div>
     </section>
   </main>
