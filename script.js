@@ -59,6 +59,25 @@ const projects = {
 const q = (s, ctx = document) => ctx.querySelector(s);
 const qa = (s, ctx = document) => [...ctx.querySelectorAll(s)];
 
+// Keep short Russian prepositions/conjunctions attached to the following word.
+function fixHangingPrepositions(root = document.body) {
+  const shortWords = /(^|[\s(«„"—–-])((?:в|во|на|к|ко|с|со|у|о|об|обо|от|до|по|за|из|изо|для|при|под|подо|над|надо|без|через|между|и|а|но|да|или|либо|не|ни|что|как|же|бы|ли|то))\s+(?=\S)/giu;
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  let node;
+  while ((node = walker.nextNode())) nodes.push(node);
+
+  nodes.forEach(textNode => {
+    const parent = textNode.parentElement;
+    if (!parent || parent.closest("script,style,pre,code,input,textarea,select,option,[contenteditable='true']")) return;
+    const value = textNode.nodeValue;
+    if (!value || !value.trim()) return;
+    textNode.nodeValue = value.replace(shortWords, "$1$2\u00A0");
+  });
+}
+
+fixHangingPrepositions();
+
 window.addEventListener("load", () => {
   document.body.classList.add("loaded");
   qa(".hero .reveal").forEach(el => el.classList.add("is-visible"));
@@ -149,6 +168,7 @@ function openProject(id, playAnimation = false) {
     drawerGallery.appendChild(fig);
   });
 
+  fixHangingPrepositions(drawer);
   drawer.classList.add("is-open");
   drawer.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
