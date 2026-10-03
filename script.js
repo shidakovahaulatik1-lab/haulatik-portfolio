@@ -224,3 +224,18 @@ contactForm.addEventListener("submit", e => {
   const body = encodeURIComponent(lines.join("\n"));
   window.location.href = "mailto:shidakova.haulatik1@mail.ru?subject=" + subject + "&body=" + body;
 });
+const projectHoverMedia = qa(".project-media");
+projectHoverMedia.forEach(media => {
+  media.addEventListener("pointermove", e => {
+    if (e.pointerType && e.pointerType !== "mouse") return;
+    const r = media.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width - .5) * 14;
+    const y = ((e.clientY - r.top) / r.height - .5) * 10;
+    media.style.setProperty("--move-x", x.toFixed(2) + "px");
+    media.style.setProperty("--move-y", y.toFixed(2) + "px");
+  });
+  media.addEventListener("pointerleave", () => {
+    media.style.setProperty("--move-x", "0px");
+    media.style.setProperty("--move-y", "0px");
+  });
+});
