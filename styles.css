@@ -237,20 +237,48 @@ img{display:block;max-width:100%}
   background:var(--bg);
 }
 .projects-heading>p{max-width:520px;margin:28px 0 0;font-size:16px;opacity:.72}
+.projects-marquee{
+  overflow:hidden;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:18px 0 16px;
+  background:var(--bg);
+  position:relative;
+  z-index:21;
+}
+.projects-marquee-track{
+  display:flex;
+  width:max-content;
+  gap:7vw;
+  white-space:nowrap;
+  font-size:clamp(52px,7vw,118px);
+  line-height:.86;
+  letter-spacing:-.065em;
+  font-weight:300;
+  color:rgba(255,255,255,.18);
+  animation:projectsTicker 22s linear infinite;
+}
+.projects-marquee-track span{display:block}
+@keyframes projectsTicker{
+  from{transform:translateX(12vw)}
+  to{transform:translateX(-56%)}
+}
+
 .project-stack{
   position:relative;
   isolation:isolate;
   background:var(--bg);
 }
 .project-stage{
+  position:relative;
+  height:165svh;
+}
+.project-stage:last-child{height:100svh}
+.project-card{
   position:sticky;
   top:0;
-  height:100svh;
-  overflow:hidden;
-}
-.project-card{
   position:relative;
-  height:100%;
+  height:100svh;
   overflow:hidden;
   padding:0;
   background:var(--bg);
@@ -301,8 +329,8 @@ img{display:block;max-width:100%}
 .project-media{
   position:absolute;
   left:50%;
-  top:calc(var(--header-h) + 64px);
-  bottom:188px;
+  top:calc(var(--header-h) + 56px);
+  bottom:168px;
   z-index:3;
   width:min(86vw,1450px);
   margin:0;
@@ -335,11 +363,11 @@ img{display:block;max-width:100%}
   right:0;
   bottom:0;
   z-index:12;
-  min-height:188px;
-  padding:25px var(--pad) 30px;
+  min-height:168px;
+  padding:22px var(--pad) 24px;
   display:grid;
   grid-template-columns:minmax(0,1fr) auto;
-  align-items:end;
+  align-items:center;
   gap:36px;
   text-align:left;
   background:rgba(36,37,35,.92);
@@ -361,7 +389,7 @@ img{display:block;max-width:100%}
   flex-wrap:wrap;
   gap:14px;
   justify-self:end;
-  align-self:end;
+  align-self:center;
 }
 .text-btn{
   border:1px solid var(--paper);
@@ -393,7 +421,8 @@ img{display:block;max-width:100%}
   .project-copy h3{font-size:clamp(27px,3.6vw,42px);max-width:22ch}
 }
 @media(max-width:760px){
-  .project-stage{height:100svh}
+  .project-stage{height:145svh}
+  .project-stage:last-child{height:100svh}
   .project-meta{
     left:18px;
     right:18px;
@@ -414,11 +443,11 @@ img{display:block;max-width:100%}
     right:18px;
     width:auto;
     top:calc(var(--header-h) + 72px);
-    bottom:214px;
+    bottom:205px;
     transform:none;
   }
   .project-copy{
-    min-height:214px;
+    min-height:205px;
     padding:22px 18px 24px;
     grid-template-columns:1fr;
     align-content:end;
@@ -434,12 +463,13 @@ img{display:block;max-width:100%}
 
 .tools{background:var(--paper);color:var(--graphite);overflow:hidden}
 .tool-marquee{margin-top:70px;border-top:1px solid var(--dark-line);border-bottom:1px solid var(--dark-line);overflow:hidden}
-.tool-track{display:flex;width:max-content;gap:55px;padding:34px 0;animation:marquee 28s linear infinite}
+.tool-track{display:flex;width:max-content;padding:34px 0;animation:marquee 32s linear infinite;will-change:transform}
 .tool-marquee:hover .tool-track{animation-play-state:paused}
+.tool-set{display:flex;align-items:center;gap:55px;padding-right:55px}
 .tool{display:flex;align-items:center;gap:14px;font-size:20px;white-space:nowrap}
 .tool iconify-icon{font-size:40px}
 .alice-mark{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#7c3cff,#ff4d8d);color:white;font-weight:600}
-@keyframes marquee{to{transform:translateX(-35%)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
 
 .process{background:var(--bg)}
 .process-list{list-style:none;padding:0;margin:70px 0 0;border-top:1px solid var(--line)}
@@ -553,5 +583,5 @@ body.loaded .hero-stats{transition-delay:.5s}
 @media(prefers-reduced-motion:reduce){
   *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
   .reveal{opacity:1!important;transform:none!important}
-  .hero-ghost{animation:none!important}
+  .hero-ghost,.projects-marquee-track{animation:none!important}
 }
