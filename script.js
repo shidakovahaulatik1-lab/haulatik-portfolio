@@ -18,6 +18,7 @@ const projects = {
     task: "Показать концепцию проекта, его преимущества и потенциал так, чтобы ключевая идея быстро считывалась инвестором.",
     result: "Выстроен визуальный сценарий, в котором идея проекта раскрывается через композицию и анимацию, а ключевые преимущества получают собственные смысловые акценты.",
     cover: "assetsprojectsvibe-cover.png.png",
+    animation: "vibe-animation.mp4.mp4",
     gallery: ["vibe-support-1.png.png","vibe-support-2.png.png","vibe-support-3.png.png","vibe-support-4.png.png"]
   },
   investors: {
@@ -34,7 +35,8 @@ const projects = {
     task: "Адаптировать материал о цифровом детоксе под выступление: выстроить логику, выделить ключевые смыслы и сделать подачу удобной для спикера.",
     result: "За 3 дня переработаны 15 слайдов: усилена структура, создана новая визуальная система и добавлена анимация с Morph-переходами — презентация стала работать как полноценное визуальное сопровождение вебинара, а не просто набор слайдов.",
     cover: "assetsprojectsdigital-detox-cover.png.png",
-    gallery: ["digital-detox-support-1.png.png","digital-detox-support-2.png.png","- digital-detox-support-3.png.png"]
+    animation: "digital-detox-animation.gif",
+    gallery: ["digital-detox-support-1.png.png","digital-detox-support-2.png.png","- digital-detox-support-3.png.png","- digital-detox-support-4.png.png"]
   },
   "alyi-put": {
     label: "Концептуальная презентация",
@@ -133,13 +135,8 @@ function openProject(id, playAnimation = false) {
     drawerPreview.src = p.cover || "";
     drawerPreview.alt = p.title || "Проект";
   }
-  drawerAnimationBtn.hidden = true;
+  drawerAnimationBtn.hidden = !p.animation;
   drawerAnimationBtn.textContent = "Смотреть анимацию ▶";
-  if (p.animation) {
-    fetch(p.animation, { method: "HEAD" })
-      .then(r => { drawerAnimationBtn.hidden = !r.ok; })
-      .catch(() => { drawerAnimationBtn.hidden = true; });
-  }
 
   drawerGallery.innerHTML = "";
   (p.gallery || []).forEach((src, i) => {
@@ -172,8 +169,37 @@ function toggleAnimation() {
   if (!activeProject) return;
   const p = projects[activeProject];
   if (!p?.animation) return;
+
   showingAnimation = !showingAnimation;
-  drawerPreview.src = showingAnimation ? p.animation : p.cover;
+  const isVideoAnimation = /\.mp4($|\?)/i.test(p.animation);
+
+  if (showingAnimation && isVideoAnimation) {
+    drawerPreview.hidden = true;
+    drawerPreview.removeAttribute("src");
+    drawerVideo.hidden = false;
+    drawerVideo.src = p.animation;
+    drawerVideo.autoplay = true;
+    drawerVideo.muted = false;
+    drawerVideo.loop = false;
+    drawerVideo.controls = true;
+    drawerVideo.play().catch(() => {});
+  } else if (showingAnimation) {
+    drawerVideo.pause();
+    drawerVideo.hidden = true;
+    drawerVideo.removeAttribute("src");
+    drawerPreview.hidden = false;
+    drawerPreview.src = p.animation;
+    drawerPreview.alt = (p.title || "Проект") + " — анимация";
+  } else {
+    drawerVideo.pause();
+    drawerVideo.hidden = true;
+    drawerVideo.removeAttribute("src");
+    drawerVideo.controls = false;
+    drawerPreview.hidden = false;
+    drawerPreview.src = p.cover || "";
+    drawerPreview.alt = p.title || "Проект";
+  }
+
   drawerAnimationBtn.textContent = showingAnimation ? "Вернуться к превью ←" : "Смотреть анимацию ▶";
 }
 
