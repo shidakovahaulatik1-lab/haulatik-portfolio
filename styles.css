@@ -342,22 +342,15 @@ img{display:block;max-width:100%}
 }
 .project-media{
   position:absolute;
-  left:50%;
-  top:calc(var(--header-h) + 54px);
-  bottom:auto;
+  inset:0;
   z-index:3;
-  width:min(
-    92vw,
-    1500px,
-    calc((100svh - var(--header-h) - 118px) * 1.7777778)
-  );
-  aspect-ratio:16/9;
+  width:100vw;
+  height:100svh;
   margin:0;
   display:grid;
   place-items:center;
   overflow:hidden;
-  background:transparent;
-  transform:translateX(-50%);
+  background:var(--bg);
   cursor:pointer;
 }
 .project-media::after{
@@ -373,12 +366,12 @@ img{display:block;max-width:100%}
   height:100%;
   object-fit:contain!important;
   object-position:center!important;
-  transform:translate3d(var(--move-x),var(--move-y),0) scale(1.012);
+  transform:translate3d(var(--move-x),var(--move-y),0) scale(1);
   transition:transform .28s cubic-bezier(.2,.7,.2,1);
   will-change:transform;
 }
 .project-media:hover img,.project-media:hover video{
-  transform:translate3d(var(--move-x),var(--move-y),0) scale(1.025);
+  transform:translate3d(var(--move-x),var(--move-y),0) scale(1.012);
 }
 .project-video{display:block;background:#000}
 .project-media.asset-missing .asset-note,.hero-portrait.asset-missing .asset-note{display:block}
@@ -410,6 +403,7 @@ img{display:block;max-width:100%}
 @media(max-width:760px){
   .project-stage{height:100svh}
   .project-gap{height:24svh}
+  .project-media{width:100vw;height:100svh}
   .project-meta{
     left:18px;
     right:18px;
