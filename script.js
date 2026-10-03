@@ -44,7 +44,7 @@ const projects = {
     task: "",
     result: "",
     cover: "assets/animations/alyi-put-cover.gif",
-    gallery: ["assets/animations/alyi-put-slide-2.gif"]
+    gallery: []
   },
   animated: {
     label: "Анимационный проект",
