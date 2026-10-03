@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Хаулат Шидакова — дизайнер презентаций для бизнеса и экспертов." />
+  <title>Хаулат Шидакова — дизайнер презентаций</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="page-grid" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="На главную">
+      <img src="assets/sh-logo.svg" alt="SH" class="brand-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="brand-fallback">SH</span>
+    </a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#about">Обо мне</a>
+      <a href="#projects">Проекты</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="header-cta" href="#contacts">Обсудить проект <span>↗</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div class="hero-intro reveal">
+          <p class="eyebrow">ПОРТФОЛИО</p>
+          <h1 id="hero-title">Дизайнер презентаций</h1>
+          <p class="hero-niche">для бизнеса и экспертов</p>
+        </div>
+
+        <figure class="hero-portrait reveal">
+          <img src="assets/portrait-main.png" alt="Хаулат Шидакова" />
+          <figcaption class="asset-note">Добавьте цветное фото: assets/portrait-main.png</figcaption>
+        </figure>
+
+        <div class="hero-right reveal">
+          <h2>Дизайнер презентаций<br>для бизнеса и экспертов</h2>
+          <div class="hero-directions">
+            <div><span>Для бизнеса</span><p>КП, услуги и проекты</p></div>
+            <div><span>Для экспертов</span><p>Вебинары и выступления</p></div>
+            <div><span>Презентации с нуля</span><p>Структура + дизайн</p></div>
+            <div><span>Редизайн</span><p>Современная и понятная подача</p></div>
+          </div>
+        </div>
+
+        <div class="hero-name reveal" aria-label="Хаулат Шидакова">
+          <span>ХАУЛАТ</span>
+          <span>ШИДАКОВА</span>
+        </div>
+      </div>
+
+      <div class="hero-stats reveal">
+        <div class="stat"><strong>3+</strong><span>года опыта</span></div>
+        <div class="stat"><strong>70+</strong><span>выполненных проектов</span></div>
+        <div class="stat stat-wide"><strong>Самозанятость</strong><span>официальное сотрудничество</span></div>
+      </div>
+    </section>
+
+    <section class="about section" id="about">
+      <div class="section-kicker">ОБО МНЕ</div>
+      <div class="about-layout">
+        <div class="about-sticky">
+          <p>Я превращаю сложную информацию в понятные и визуально сильные презентации.</p>
+        </div>
+        <div class="about-story">
+          <article class="about-step reveal"><span>01</span><p>Работаю с бизнесом, экспертами и проектными командами.</p></article>
+          <article class="about-step reveal"><span>02</span><p>Помогаю выстроить структуру, найти визуальное направление и оформить материал в единой системе.</p></article>
+          <article class="about-step reveal"><span>03</span><p>Могу подключиться как к презентации с нуля, так и к редизайну готового материала.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section" aria-labelledby="services-title">
+      <div class="section-kicker">УСЛУГИ</div>
+      <h2 class="section-title" id="services-title">С ЧЕМ Я МОГУ ПОМОЧЬ</h2>
+      <div class="service-list">
+        <div class="service-row"><span>01</span><h3>Презентация с нуля</h3><p>Структура, визуальная концепция и полное оформление.</p><i>↗</i></div>
+        <div class="service-row"><span>02</span><h3>Редизайн</h3><p>Обновление существующей презентации с сохранением смысла.</p><i>↗</i></div>
+        <div class="service-row"><span>03</span><h3>Для бизнеса</h3><p>Коммерческие предложения, проекты, услуги и инвестиционные материалы.</p><i>↗</i></div>
+        <div class="service-row"><span>04</span><h3>Для экспертов</h3><p>Вебинары, выступления, образовательные и продающие материалы.</p><i>↗</i></div>
+      </div>
+    </section>
+
+    <section class="projects section" id="projects" aria-labelledby="projects-title">
+      <div class="projects-heading">
+        <div class="section-kicker">ИЗБРАННЫЕ РАБОТЫ</div>
+        <h2 class="section-title" id="projects-title">ПРОЕКТЫ</h2>
+        <p>Каждый следующий проект наслаивается на предыдущий при прокрутке.</p>
+      </div>
+
+      <div class="project-stack" id="projectStack">
+        <article class="project-stage" data-project="webinar">
+          <div class="project-card project-card--dark">
+            <div class="project-meta"><span>01 / 06</span><span>ВЕБИНАР · ПРОДАЮЩАЯ ПРЕЗЕНТАЦИЯ</span></div>
+            <div class="project-copy">
+              <h3>Для экспертов и онлайн-школ:<br>вебинар, который ведёт аудиторию к покупке</h3>
+              <button class="text-btn open-project" data-project="webinar">Смотреть проект <span>↘</span></button>
+            </div>
+            <figure class="project-media">
+              <img src="assets/projects/webinar-cover.jpg" alt="Продающая презентация для вебинара" />
+              <figcaption class="asset-note">assets/projects/webinar-cover.jpg</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="project-stage" data-project="vibe">
+          <div class="project-card project-card--light">
+            <div class="project-meta"><span>02 / 06</span><span>VIBE · ИНВЕСТИЦИОННАЯ ПРЕЗЕНТАЦИЯ</span></div>
+            <div class="project-copy">
+              <h3>Для инвестиционных проектов:<br>как показать потенциал идеи инвестору</h3>
+              <div class="project-actions">
+                <button class="text-btn open-project" data-project="vibe">Смотреть проект <span>↘</span></button>
+                <button class="text-btn play-preview" data-project="vibe">Смотреть анимацию <span>▶</span></button>
+              </div>
+            </div>
+            <figure class="project-media">
+              <img src="assets/projects/vibe-cover.jpg" alt="VIBE — инвестиционная презентация" />
+              <figcaption class="asset-note">assets/projects/vibe-cover.jpg</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="project-stage" data-project="investors">
+          <div class="project-card project-card--dark">
+            <div class="project-meta"><span>03 / 06</span><span>СТАРТАП · ИНВЕСТИЦИИ</span></div>
+            <div class="project-copy">
+              <h3>Для стартапов и команд:<br>презентация, с которой понятно выходить к инвесторам</h3>
+              <button class="text-btn open-project" data-project="investors">Смотреть проект <span>↘</span></button>
+            </div>
+            <figure class="project-media">
+              <img src="assets/projects/investors-cover.jpg" alt="Презентация для инвесторов" />
+              <figcaption class="asset-note">assets/projects/investors-cover.jpg</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="project-stage" data-project="detox">
+          <div class="project-card project-card--light">
+            <div class="project-meta"><span>04 / 06</span><span>WELLNESS · ВЕБИНАР</span></div>
+            <div class="project-copy">
+              <h3>Для экспертов и wellness-проектов:<br>вебинар, который удерживает внимание</h3>
+              <div class="project-actions">
+                <button class="text-btn open-project" data-project="detox">Смотреть проект <span>↘</span></button>
+                <button class="text-btn play-preview" data-project="detox">Смотреть анимацию <span>▶</span></button>
+              </div>
+            </div>
+            <figure class="project-media">
+              <img src="assets/projects/digital-detox-cover.jpg" alt="Цифровой детокс" />
+              <figcaption class="asset-note">assets/projects/digital-detox-cover.jpg</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="project-stage" data-project="alyi-put">
+          <div class="project-card project-card--dark">
+            <div class="project-meta"><span>05 / 06</span><span>КОНЦЕПТУАЛЬНАЯ ПРЕЗЕНТАЦИЯ</span></div>
+            <div class="project-copy">
+              <h3>Алый Путь</h3>
+              <button class="text-btn open-project" data-project="alyi-put">Смотреть проект <span>↘</span></button>
+            </div>
+            <figure class="project-media">
+              <img src="assets/projects/alyi-put-cover.jpg" alt="Алый Путь" />
+              <figcaption class="asset-note">assets/projects/alyi-put-cover.jpg</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="project-stage" data-project="animated">
+          <div class="project-card project-card--light">
+            <div class="project-meta"><span>06 / 06</span><span>АНИМАЦИОННЫЙ ПРОЕКТ</span></div>
+            <div class="project-copy">
+              <h3>Анимационный проект</h3>
+              <div class="project-actions">
+                <button class="text-btn open-project" data-project="animated">Смотреть проект <span>↘</span></button>
+                <button class="text-btn play-preview" data-project="animated">Смотреть анимацию <span>▶</span></button>
+              </div>
+            </div>
+            <figure class="project-media">
+              <img src="assets/projects/animated-cover.jpg" alt="Анимационный проект" />
+              <figcaption class="asset-note">assets/projects/animated-cover.jpg</figcaption>
+            </figure>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="tools section" aria-labelledby="tools-title">
+      <div class="section-kicker">ИНСТРУМЕНТЫ</div>
+      <h2 class="section-title" id="tools-title">РАБОЧАЯ СРЕДА</h2>
+      <div class="tool-marquee" aria-label="Инструменты">
+        <div class="tool-track">
+          <div class="tool"><iconify-icon icon="logos:microsoft-powerpoint"></iconify-icon><span>PowerPoint</span></div>
+          <div class="tool"><iconify-icon icon="logos:google-slides"></iconify-icon><span>Google Slides</span></div>
+          <div class="tool"><iconify-icon icon="logos:figma"></iconify-icon><span>Figma</span></div>
+          <div class="tool"><iconify-icon icon="logos:openai-icon"></iconify-icon><span>ChatGPT</span></div>
+          <div class="tool"><iconify-icon icon="logos:claude-icon"></iconify-icon><span>Claude</span></div>
+          <div class="tool"><iconify-icon icon="logos:google-gemini"></iconify-icon><span>Gemini</span></div>
+          <div class="tool"><iconify-icon icon="simple-icons:midjourney"></iconify-icon><span>Midjourney</span></div>
+          <div class="tool"><iconify-icon icon="simple-icons:xai"></iconify-icon><span>Grok</span></div>
+          <div class="tool"><iconify-icon icon="simple-icons:deepseek"></iconify-icon><span>DeepSeek</span></div>
+          <div class="tool"><span class="alice-mark">A</span><span>Алиса</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process section" aria-labelledby="process-title">
+      <div class="section-kicker">ПРОЦЕСС</div>
+      <h2 class="section-title" id="process-title">КАК ПРОХОДИТ РАБОТА</h2>
+      <ol class="process-list">
+        <li><span>01</span><strong>Задача</strong><p>Определяем цель, аудиторию и формат.</p></li>
+        <li><span>02</span><strong>Структура</strong><p>Выстраиваем логику и последовательность материала.</p></li>
+        <li><span>03</span><strong>Концепция</strong><p>Формируем визуальное направление.</p></li>
+        <li><span>04</span><strong>Дизайн</strong><p>Оформляю всю презентацию в единой системе.</p></li>
+        <li><span>05</span><strong>Финал</strong><p>Вношу согласованные правки и передаю материалы.</p></li>
+      </ol>
+    </section>
+
+    <section class="contact section" id="contacts" aria-labelledby="contact-title">
+      <div class="contact-head">
+        <div class="section-kicker">КОНТАКТЫ</div>
+        <h2 id="contact-title">ЕСТЬ ПРОЕКТ?<br>ДАВАЙТЕ ОБСУДИМ.</h2>
+        <p>Расскажите о задаче — я свяжусь с вами и предложу подходящий формат работы.</p>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <label>Имя<input type="text" name="name" required></label>
+        <label>Телефон / Telegram<input type="text" name="contact" required></label>
+        <label>Тип проекта
+          <select name="type">
+            <option>Презентация с нуля</option>
+            <option>Редизайн</option>
+            <option>Вебинар</option>
+            <option>Коммерческое предложение</option>
+            <option>Инвестиционная презентация</option>
+            <option>Другое</option>
+          </select>
+        </label>
+        <label>Количество слайдов<input type="text" name="slides"></label>
+        <label>Срок<input type="text" name="deadline"></label>
+        <label class="field-wide">Расскажите о задаче<textarea name="message" rows="4" required></textarea></label>
+        <button class="submit-btn" type="submit">ОТПРАВИТЬ ЗАЯВКУ <span>→</span></button>
+      </form>
+
+      <div class="contact-links">
+        <a href="tel:+79304440854">+7 930 444-08-54</a>
+        <a href="mailto:shidakova.haulatik1@mail.ru">shidakova.haulatik1@mail.ru</a>
+        <a href="https://t.me/haulatik09" target="_blank" rel="noreferrer">@haulatik09</a>
+        <a href="https://wa.me/79304440854" target="_blank" rel="noreferrer">WhatsApp ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Хаулат Шидакова</span>
+    <span>Дизайнер презентаций</span>
+  </footer>
+
+  <aside class="project-drawer" id="projectDrawer" aria-hidden="true">
+    <div class="drawer-backdrop" data-close-drawer></div>
+    <div class="drawer-sheet" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <button class="drawer-close" data-close-drawer>Свернуть ↑</button>
+      <div class="drawer-head">
+        <div class="drawer-label" id="drawerLabel"></div>
+        <h2 id="drawerTitle"></h2>
+      </div>
+      <div class="drawer-two">
+        <section><span>Задача</span><p id="drawerTask"></p></section>
+        <section><span>Результат</span><p id="drawerResult"></p></section>
+      </div>
+      <div class="drawer-media">
+        <div class="drawer-preview-wrap">
+          <img id="drawerPreview" src="" alt="">
+          <button class="animation-btn" id="drawerAnimationBtn" hidden>Смотреть анимацию ▶</button>
+        </div>
+        <div class="drawer-gallery" id="drawerGallery"></div>
+      </div>
+    </div>
+  </aside>
+</body>
+</html>
