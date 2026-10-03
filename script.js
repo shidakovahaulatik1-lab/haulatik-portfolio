@@ -4,12 +4,10 @@ const projects = {
     title: "Вебинар, который ведёт аудиторию к покупке",
     task: "Выстроить материал вебинара так, чтобы аудитория последовательно понимала ценность продукта и логику предложения.",
     result: "За 3 дня выстроена цельная система из 18 слайдов — от 3 дизайн-концепций до финальной подачи, которая последовательно раскрывает ценность продукта и поддерживает продающий сценарий вебинара.",
-    cover: "assets/projects/webinar-cover.png",
+    cover: "assetsprojectswebinar-cover.png.png",
     gallery: [
-      "assets/projects/webinar-support-1.png",
-      "assets/projects/webinar-support-2.png",
-      "assets/projects/webinar-speaker-1.png",
-      "assets/projects/webinar-speaker-2.png"
+      "assetsprojectswebinar-support-3.png.png",
+      "assetsprojectswebinar-support-4.png.png"
     ]
   },
   vibe: {
@@ -17,8 +15,7 @@ const projects = {
     title: "Как показать потенциал идеи инвестору",
     task: "Показать концепцию проекта, его преимущества и потенциал так, чтобы ключевая идея быстро считывалась инвестором.",
     result: "Выстроен визуальный сценарий, в котором идея проекта раскрывается через композицию и анимацию, а ключевые преимущества получают собственные смысловые акценты.",
-    cover: "assets/projects/vibe-cover.png",
-    animation: "assets/animations/vibe.gif",
+    cover: "assetsprojectsvibe-cover.png.png",
     gallery: ["assets/projects/vibe-support-1.png","assets/projects/vibe-support-2.png"]
   },
   investors: {
@@ -26,7 +23,7 @@ const projects = {
     title: "Презентация, с которой понятно выходить к инвесторам",
     task: "Собрать продукт и команду в понятную историю, чтобы инвестор быстро видел суть предложения и ценность проекта.",
     result: "За 24 часа разрозненная информация о продукте и команде собрана в компактную презентацию из 6 слайдов с ясной структурой, согласованными текстами и единым визуальным направлением.",
-    cover: "assets/projects/investors-cover.png",
+    cover: "assetsprojectsinvestors-cover.png.png",
     gallery: ["assets/projects/investors-support-1.png","assets/projects/investors-support-2.png"]
   },
   detox: {
@@ -34,8 +31,7 @@ const projects = {
     title: "Вебинар, который удерживает внимание",
     task: "Адаптировать материал о цифровом детоксе под выступление: выстроить логику, выделить ключевые смыслы и сделать подачу удобной для спикера.",
     result: "За 3 дня переработаны 15 слайдов: усилена структура, создана новая визуальная система и добавлена анимация с Morph-переходами — презентация стала работать как полноценное визуальное сопровождение вебинара, а не просто набор слайдов.",
-    cover: "assets/projects/digital-detox-cover.png",
-    animation: "assets/animations/digital-detox.gif",
+    cover: "assetsprojectsdigital-detox-cover.png.png",
     gallery: ["assets/projects/digital-detox-support-1.png","assets/projects/digital-detox-support-2.png"]
   },
   "alyi-put": {
@@ -43,7 +39,7 @@ const projects = {
     title: "Алый Путь",
     task: "",
     result: "",
-    cover: "assets/animations/alyi-put-cover.gif",
+    cover: "assetsanimationsalyi-put-cover.gif.gif",
     gallery: []
   },
   animated: {
@@ -51,8 +47,7 @@ const projects = {
     title: "Анимационный проект",
     task: "",
     result: "",
-    cover: "assets/projects/animated-cover.png",
-    animation: "assets/animations/animated-project.gif",
+    coverVideo: "animated-project.mp4.mp4",
     gallery: []
   }
 };
@@ -149,6 +144,7 @@ const drawerLabel = q("#drawerLabel");
 const drawerTask = q("#drawerTask");
 const drawerResult = q("#drawerResult");
 const drawerPreview = q("#drawerPreview");
+const drawerVideo = q("#drawerVideo");
 const drawerGallery = q("#drawerGallery");
 const drawerAnimationBtn = q("#drawerAnimationBtn");
 let activeProject = null;
@@ -163,8 +159,23 @@ function openProject(id, playAnimation = false) {
   drawerTitle.textContent = p.title || "";
   drawerTask.textContent = p.task || "В этом проекте основной акцент сделан на визуальной концепции.";
   drawerResult.textContent = p.result || "Кейс представлен как визуальная история без выдуманных метрик и результатов.";
-  drawerPreview.src = p.cover || "";
-  drawerPreview.alt = p.title || "Проект";
+  if (p.coverVideo) {
+    drawerPreview.hidden = true;
+    drawerPreview.removeAttribute("src");
+    drawerVideo.hidden = false;
+    drawerVideo.src = p.coverVideo;
+    drawerVideo.autoplay = true;
+    drawerVideo.muted = true;
+    drawerVideo.loop = true;
+    drawerVideo.play().catch(() => {});
+  } else {
+    drawerVideo.pause();
+    drawerVideo.hidden = true;
+    drawerVideo.removeAttribute("src");
+    drawerPreview.hidden = false;
+    drawerPreview.src = p.cover || "";
+    drawerPreview.alt = p.title || "Проект";
+  }
   drawerAnimationBtn.hidden = true;
   drawerAnimationBtn.textContent = "Смотреть анимацию ▶";
   if (p.animation) {
@@ -194,6 +205,8 @@ function closeProject() {
   drawer.classList.remove("is-open");
   drawer.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
+  drawerVideo.pause();
+  drawerVideo.removeAttribute("src");
   activeProject = null;
   showingAnimation = false;
 }
@@ -214,6 +227,19 @@ drawerAnimationBtn.addEventListener("click", toggleAnimation);
 document.addEventListener("keydown", e => {
   if (e.key === "Escape" && drawer.classList.contains("is-open")) closeProject();
 });
+
+
+const projectVideoObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    const video = entry.target;
+    if (entry.isIntersecting && entry.intersectionRatio > 0.18) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  });
+}, { threshold: [0, .18, .5] });
+qa(".project-video").forEach(video => projectVideoObserver.observe(video));
 
 const contactForm = q("#contactForm");
 contactForm.addEventListener("submit", e => {
