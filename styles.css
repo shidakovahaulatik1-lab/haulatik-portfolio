@@ -346,9 +346,9 @@ img{display:block;max-width:100%}
   bottom:auto;
   z-index:3;
   width:min(
-    88vw,
-    1450px,
-    calc((100svh - var(--header-h) - 232px) * 1.7777778)
+    92vw,
+    1500px,
+    calc((100svh - var(--header-h) - 118px) * 1.7777778)
   );
   aspect-ratio:16/9;
   margin:0;
@@ -357,6 +357,7 @@ img{display:block;max-width:100%}
   overflow:hidden;
   background:transparent;
   transform:translateX(-50%);
+  cursor:pointer;
 }
 .project-media::after{
   content:"";
@@ -376,72 +377,30 @@ img{display:block;max-width:100%}
 .project-video{display:block;background:#000}
 .project-media.asset-missing .asset-note,.hero-portrait.asset-missing .asset-note{display:block}
 
-.project-copy{
+
+.project-open-hint{
   position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
+  right:var(--pad);
+  bottom:22px;
   z-index:12;
-  min-height:154px;
-  padding:20px var(--pad) 22px;
-  display:grid;
-  grid-template-columns:minmax(0,1fr) auto;
-  align-items:center;
-  gap:36px;
-  text-align:left;
-  background:rgba(36,37,35,.92);
-  border-top:1px solid rgba(255,255,255,.22);
-  backdrop-filter:blur(18px);
-  box-shadow:0 -20px 55px rgba(0,0,0,.12);
-}
-.project-copy h3{
-  font-size:clamp(28px,2.55vw,48px);
-  line-height:1.02;
-  letter-spacing:-.045em;
-  font-weight:300;
-  margin:0;
-  max-width:26ch;
-  text-wrap:balance;
-}
-.project-actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-  justify-self:end;
-  align-self:center;
-}
-.text-btn{
-  border:1px solid var(--paper);
-  background:var(--paper);
-  color:var(--graphite);
-  padding:14px 17px;
-  min-width:190px;
+  border:1px solid rgba(255,255,255,.72);
+  background:rgba(27,28,26,.72);
+  color:white;
+  padding:12px 16px;
+  font-size:13px;
   cursor:pointer;
-  font-size:15px;
-  font-weight:600;
-  display:inline-flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:28px;
-  box-shadow:0 10px 34px rgba(0,0,0,.18);
-  transition:background .25s,color .25s,transform .25s;
+  backdrop-filter:blur(10px);
+  transition:background .25s,transform .25s;
 }
-.text-btn span{display:inline-block;transition:transform .25s}
-.text-btn:hover{
-  background:transparent;
-  color:var(--paper);
-  transform:translateY(-2px);
-}
-.text-btn:hover span{transform:translate(4px,4px)}
+.project-open-hint span{margin-left:18px}
+.project-open-hint:hover{background:var(--paper);color:var(--graphite);transform:translateY(-2px)}
 
 @media(max-width:1100px){
   .project-media{
-    width:min(90vw,1220px,calc((100svh - var(--header-h) - 238px) * 1.7777778));
-    top:calc(var(--header-h) + 54px);
+    width:min(92vw,1250px,calc((100svh - var(--header-h) - 122px) * 1.7777778));
+    top:calc(var(--header-h) + 50px);
     bottom:auto;
   }
-  .project-copy{min-height:170px;gap:24px}
-  .project-copy h3{font-size:clamp(27px,3.6vw,42px);max-width:22ch}
   .project-gap{height:30svh}
 }
 @media(max-width:760px){
@@ -465,24 +424,12 @@ img{display:block;max-width:100%}
   .project-media{
     left:50%;
     right:auto;
-    width:min(92vw,calc((100svh - var(--header-h) - 282px) * 1.7777778));
-    top:calc(var(--header-h) + 68px);
+    width:min(94vw,calc((100svh - var(--header-h) - 118px) * 1.7777778));
+    top:calc(var(--header-h) + 62px);
     bottom:auto;
     transform:translateX(-50%);
   }
-  .project-copy{
-    min-height:205px;
-    padding:22px 18px 24px;
-    grid-template-columns:1fr;
-    align-content:end;
-    gap:18px;
-  }
-  .project-copy h3{
-    font-size:clamp(26px,7.6vw,40px);
-    max-width:18ch;
-  }
-  .project-actions{justify-self:start}
-  .text-btn{min-width:180px}
+  .project-open-hint{right:18px;bottom:16px;padding:10px 13px;font-size:12px}
 }
 
 .tools{background:var(--paper);color:var(--graphite);overflow:hidden}
@@ -491,8 +438,7 @@ img{display:block;max-width:100%}
 .tool-marquee:hover .tool-track{animation-play-state:paused}
 .tool-set{display:flex;align-items:center;gap:55px;padding-right:55px}
 .tool{display:flex;align-items:center;gap:14px;font-size:20px;white-space:nowrap}
-.tool iconify-icon{font-size:40px}
-.alice-mark{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#7c3cff,#ff4d8d);color:white;font-weight:600}
+.tool iconify-icon{font-size:40px;width:40px;height:40px;display:block;flex:0 0 40px}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
 .process{background:var(--bg)}
