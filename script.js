@@ -6,6 +6,8 @@ const projects = {
     result: "За 3 дня выстроена цельная система из 18 слайдов — от 3 дизайн-концепций до финальной подачи, которая последовательно раскрывает ценность продукта и поддерживает продающий сценарий вебинара.",
     cover: "assetsprojectswebinar-cover.png.png",
     gallery: [
+      "webinar-support-1.png",
+      "webinar-support-2.png",
       "assetsprojectswebinar-support-3.png.png",
       "assetsprojectswebinar-support-4.png.png"
     ]
@@ -16,7 +18,7 @@ const projects = {
     task: "Показать концепцию проекта, его преимущества и потенциал так, чтобы ключевая идея быстро считывалась инвестором.",
     result: "Выстроен визуальный сценарий, в котором идея проекта раскрывается через композицию и анимацию, а ключевые преимущества получают собственные смысловые акценты.",
     cover: "assetsprojectsvibe-cover.png.png",
-    gallery: ["assets/projects/vibe-support-1.png","assets/projects/vibe-support-2.png"]
+    gallery: ["vibe-support-1.png","vibe-support-2.png","vibe-support-3.png","vibe-support-4.png"]
   },
   investors: {
     label: "Для стартапов и команд",
@@ -24,7 +26,7 @@ const projects = {
     task: "Собрать продукт и команду в понятную историю, чтобы инвестор быстро видел суть предложения и ценность проекта.",
     result: "За 24 часа разрозненная информация о продукте и команде собрана в компактную презентацию из 6 слайдов с ясной структурой, согласованными текстами и единым визуальным направлением.",
     cover: "assetsprojectsinvestors-cover.png.png",
-    gallery: ["assets/projects/investors-support-1.png","assets/projects/investors-support-2.png"]
+    gallery: ["investors-support-1.png","investors-support-2.png","investors-support-3.png"]
   },
   detox: {
     label: "Для экспертов и wellness-проектов",
@@ -32,7 +34,7 @@ const projects = {
     task: "Адаптировать материал о цифровом детоксе под выступление: выстроить логику, выделить ключевые смыслы и сделать подачу удобной для спикера.",
     result: "За 3 дня переработаны 15 слайдов: усилена структура, создана новая визуальная система и добавлена анимация с Morph-переходами — презентация стала работать как полноценное визуальное сопровождение вебинара, а не просто набор слайдов.",
     cover: "assetsprojectsdigital-detox-cover.png.png",
-    gallery: ["assets/projects/digital-detox-support-1.png","assets/projects/digital-detox-support-2.png"]
+    gallery: ["digital-detox-support-1.png","digital-detox-support-2.png","digital-detox-support-3.png"]
   },
   "alyi-put": {
     label: "Концептуальная презентация",
