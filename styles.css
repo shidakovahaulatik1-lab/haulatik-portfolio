@@ -238,7 +238,7 @@ img{display:block;max-width:100%}
   overflow:visible;
 }
 .projects-heading{
-  padding:0 var(--pad) 72px;
+  padding:72px var(--pad) 72px;
   position:relative;
   z-index:20;
   background:var(--bg);
@@ -252,6 +252,7 @@ img{display:block;max-width:100%}
   background:var(--bg);
   position:relative;
   z-index:21;
+  margin-top:0;
 }
 .projects-marquee-track{
   display:flex;
@@ -308,7 +309,7 @@ img{display:block;max-width:100%}
   left:var(--pad);
   right:var(--pad);
   top:calc(var(--header-h) + 18px);
-  z-index:10;
+  z-index:12;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -322,7 +323,7 @@ img{display:block;max-width:100%}
   min-width:74px;
   padding:8px 11px;
   border:1px solid rgba(255,255,255,.38);
-  background:rgba(27,28,26,.42);
+  background:rgba(27,28,26,.62);
   backdrop-filter:blur(10px);
   font-size:11px;
   letter-spacing:.11em;
@@ -331,7 +332,7 @@ img{display:block;max-width:100%}
   display:inline-flex;
   align-items:center;
   padding:9px 14px;
-  background:rgba(242,242,238,.96);
+  background:rgba(242,242,238,.94);
   color:var(--graphite);
   border:1px solid rgba(255,255,255,.85);
   font-size:12px;
@@ -363,17 +364,22 @@ img{display:block;max-width:100%}
   content:"";
   position:absolute;
   inset:0;
-  border:1px solid rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.12);
   pointer-events:none;
+  z-index:4;
 }
 .project-media img,.project-media video{
   width:100%;
   height:100%;
   object-fit:contain!important;
   object-position:center!important;
-  transition:transform .4s ease;
+  transform:translate3d(var(--move-x),var(--move-y),0) scale(1.012);
+  transition:transform .28s cubic-bezier(.2,.7,.2,1);
+  will-change:transform;
 }
-.project-card:hover .project-media img,.project-card:hover .project-media video{transform:none}
+.project-media:hover img,.project-media:hover video{
+  transform:translate3d(var(--move-x),var(--move-y),0) scale(1.025);
+}
 .project-video{display:block;background:#000}
 .project-media.asset-missing .asset-note,.hero-portrait.asset-missing .asset-note{display:block}
 
@@ -381,26 +387,24 @@ img{display:block;max-width:100%}
 .project-open-hint{
   position:absolute;
   right:var(--pad);
-  bottom:22px;
-  z-index:12;
-  border:1px solid rgba(255,255,255,.72);
-  background:rgba(27,28,26,.72);
-  color:white;
-  padding:12px 16px;
+  bottom:28px;
+  z-index:13;
+  border:1px solid rgba(255,255,255,.82);
+  background:rgba(242,242,238,.94);
+  color:var(--graphite);
+  padding:14px 18px;
+  min-width:178px;
   font-size:13px;
+  font-weight:600;
   cursor:pointer;
   backdrop-filter:blur(10px);
-  transition:background .25s,transform .25s;
+  box-shadow:0 10px 30px rgba(0,0,0,.16);
+  transition:background .25s,color .25s,transform .25s;
 }
 .project-open-hint span{margin-left:18px}
-.project-open-hint:hover{background:var(--paper);color:var(--graphite);transform:translateY(-2px)}
+.project-open-hint:hover{background:rgba(27,28,26,.82);color:white;transform:translateY(-3px)}
 
 @media(max-width:1100px){
-  .project-media{
-    width:min(92vw,1250px,calc((100svh - var(--header-h) - 122px) * 1.7777778));
-    top:calc(var(--header-h) + 50px);
-    bottom:auto;
-  }
   .project-gap{height:30svh}
 }
 @media(max-width:760px){
@@ -421,15 +425,7 @@ img{display:block;max-width:100%}
     line-height:1.25;
     padding:8px 10px;
   }
-  .project-media{
-    left:50%;
-    right:auto;
-    width:min(94vw,calc((100svh - var(--header-h) - 118px) * 1.7777778));
-    top:calc(var(--header-h) + 62px);
-    bottom:auto;
-    transform:translateX(-50%);
-  }
-  .project-open-hint{right:18px;bottom:16px;padding:10px 13px;font-size:12px}
+  .project-open-hint{right:18px;bottom:18px;padding:11px 14px;font-size:12px;min-width:160px}
 }
 
 .tools{background:var(--paper);color:var(--graphite);overflow:hidden}
@@ -651,4 +647,15 @@ body.loaded .hero-stats{transition-delay:.5s}
   .reveal{opacity:1!important;transform:none!important}
   .hero-portrait{opacity:1!important;transform:none!important}
   .hero-ghost,.projects-marquee-track{animation:none!important}
+}
+.project-media::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:5;
+  pointer-events:none;
+  background:linear-gradient(to bottom,rgba(0,0,0,.14),transparent 18%,transparent 76%,rgba(0,0,0,.12));
+}
+@media (hover:hover) and (pointer:fine){
+  .project-media{cursor:pointer}
 }
