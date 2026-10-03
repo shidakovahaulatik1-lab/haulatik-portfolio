@@ -43,8 +43,8 @@ const projects = {
     title: "Алый Путь",
     task: "",
     result: "",
-    cover: "assets/projects/alyi-put-cover.png",
-    gallery: []
+    cover: "assets/animations/alyi-put-cover.gif",
+    gallery: ["assets/animations/alyi-put-slide-2.gif"]
   },
   animated: {
     label: "Анимационный проект",
@@ -81,6 +81,51 @@ qa(".project-stage").forEach((stage, index) => {
   const card = q(".project-card", stage);
   card.style.zIndex = index + 2;
 });
+
+
+const projectStages = qa(".project-stage");
+const projectCards = projectStages.map(stage => q(".project-card", stage));
+
+function updateProjectStackMotion() {
+  const vh = Math.max(window.innerHeight, 1);
+  projectStages.forEach((stage, index) => {
+    const card = projectCards[index];
+    if (!card) return;
+
+    const rect = stage.getBoundingClientRect();
+    const local = Math.min(1, Math.max(0, -rect.top / Math.max(rect.height - vh, 1)));
+    const nextStage = projectStages[index + 1];
+    let coverProgress = 0;
+
+    if (nextStage) {
+      const nextRect = nextStage.getBoundingClientRect();
+      coverProgress = Math.min(1, Math.max(0, 1 - nextRect.top / vh));
+    }
+
+    const scale = 1 - coverProgress * 0.032;
+    const lift = -coverProgress * 18;
+    const mediaY = (local - 0.5) * -30;
+    const ghostX = (local - 0.5) * 180;
+
+    card.style.setProperty("--stack-scale", scale.toFixed(4));
+    card.style.setProperty("--stack-y", lift.toFixed(1) + "px");
+    card.style.setProperty("--media-y", mediaY.toFixed(1) + "px");
+    card.style.setProperty("--ghost-x", ghostX.toFixed(1) + "px");
+    card.style.filter = coverProgress > 0 ? "brightness(" + (1 - coverProgress * 0.08).toFixed(3) + ")" : "";
+  });
+}
+
+let stackTicking = false;
+window.addEventListener("scroll", () => {
+  if (stackTicking) return;
+  stackTicking = true;
+  requestAnimationFrame(() => {
+    updateProjectStackMotion();
+    stackTicking = false;
+  });
+}, { passive: true });
+window.addEventListener("resize", updateProjectStackMotion);
+updateProjectStackMotion();
 
 function markMissingAssets() {
   qa("img").forEach(img => {
