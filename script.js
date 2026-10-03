@@ -178,6 +178,12 @@ function toggleAnimation() {
 }
 
 qa(".open-project").forEach(btn => btn.addEventListener("click", () => openProject(btn.dataset.project)));
+qa(".project-media.open-project").forEach(el => el.addEventListener("keydown", e => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    openProject(el.dataset.project);
+  }
+}));
 qa(".play-preview").forEach(btn => btn.addEventListener("click", () => openProject(btn.dataset.project, true)));
 qa("[data-close-drawer]").forEach(btn => btn.addEventListener("click", closeProject));
 drawerAnimationBtn.addEventListener("click", toggleAnimation);
