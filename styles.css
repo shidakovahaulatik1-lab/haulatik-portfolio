@@ -613,7 +613,19 @@ body.loaded .hero-stats{transition-delay:.5s}
   .hero-niche{font-size:18px}
   .hero-portrait{order:2;width:112%;margin:10px -6% 0;max-height:none}
   .hero-portrait img{max-height:none}
-  .hero-name{position:absolute;right:-4vw;bottom:12px;font-size:clamp(44px,12.5vw,72px);transform:none}
+  .hero-name{
+    position:absolute;
+    left:50%;
+    right:auto;
+    bottom:12px;
+    width:calc(100vw - 24px);
+    max-width:calc(100vw - 24px);
+    text-align:center;
+    font-size:clamp(34px,10.4vw,56px);
+    letter-spacing:-.065em;
+    transform:translateX(-50%);
+    white-space:nowrap;
+  }
   .hero-name span{white-space:nowrap}
   .hero-stats{grid-template-columns:1fr 1fr;min-height:0}
   .stat{padding:18px 10px 18px 0;display:block}
@@ -657,4 +669,12 @@ body.loaded .hero-stats{transition-delay:.5s}
 }
 @media (hover:hover) and (pointer:fine){
   .project-media{cursor:pointer}
+}
+
+/* Typography: cleaner Russian line breaks */
+p,li,.about-step p,.service-row p,.process-list p,.contact-head p,.drawer-two p{
+  text-wrap:pretty;
+}
+h1,h2,h3,.section-title,.drawer-head h2{
+  text-wrap:balance;
 }
