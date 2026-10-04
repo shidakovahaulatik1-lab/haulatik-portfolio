@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shidakovahaulatik1-lab.github.io/haulatik-portfolio/sitemap.xml
