@@ -435,8 +435,11 @@ img{display:block;max-width:100%}
 .tool{display:flex;align-items:center;gap:14px;font-size:20px;white-space:nowrap}
 .tool iconify-icon{font-size:40px;width:40px;height:40px;display:block;flex:0 0 40px}
 .tool-logo{width:40px;height:40px;display:block;object-fit:contain;flex:0 0 40px}
+.tool-logo--inline{overflow:visible}
+.tool-logo--midjourney{color:var(--graphite)}
 .tool--logo-only{min-width:105px}
 .tool--logo-only .tool-logo--wide{width:auto;max-width:118px;height:40px;flex:0 0 auto}
+.tool--gemini{transform:translateY(-4px)}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
 .process{background:var(--bg)}
