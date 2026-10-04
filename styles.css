@@ -715,16 +715,56 @@ h1,h2,h3,.section-title,.drawer-head h2{
   display:flex;
   align-items:center;
   width:max-content;
-  padding:24px 0;
-  animation:clientsMarquee 24s linear infinite;
+  padding:28px 0;
+  animation:clientsMarquee 34s linear infinite;
   will-change:transform;
 }
-.clients-track img{
+.clients-set{
+  display:flex;
+  align-items:center;
+  gap:72px;
+  padding-right:72px;
+  flex:0 0 auto;
+}
+.clients-set img{
   display:block;
   width:auto;
-  height:78px;
-  max-width:none;
+  height:72px;
+  max-width:250px;
+  object-fit:contain;
   flex:0 0 auto;
+}
+.clients-set img[alt="Anastasia Sutygina"],
+.clients-set img[src*="client-anastasia"]{
+  height:58px;
+}
+.clients-set img[alt="Системный бухгалтер"],
+.clients-set img[src*="client-system-accountant"]{
+  height:76px;
+}
+.clients-set img[alt="Клуб Профит"],
+.clients-set img[src*="client-profit-club"]{
+  height:78px;
+}
+.clients-set img[alt="Сколково"],
+.clients-set img[src*="client-skolkovo"]{
+  height:82px;
+}
+.clients-set img[alt="Worldbuilding"],
+.clients-set img[src*="client-worldbuilding"]{
+  height:66px;
+}
+.clients-set img[alt="Школа бухгалтеров Ольги Красновой"],
+.clients-set img[src*="client-school-accountants"]{
+  height:70px;
+}
+.clients-set img[alt="Фуршетные решения"],
+.clients-set img[src*="client-furshetnye-resheniya"]{
+  height:70px;
+}
+.clients-set img[alt="Nextera"],
+.clients-set img[src*="client-nextera"]{
+  height:64px;
 }
 .clients-marquee:hover .clients-track{animation-play-state:paused}
 @keyframes clientsMarquee{
@@ -745,5 +785,14 @@ h1,h2,h3,.section-title,.drawer-head h2{
   .clients-head{padding-bottom:30px}
   .clients-title{font-size:clamp(30px,10vw,48px)}
   .clients-track{padding:18px 0}
-  .clients-track img{height:64px}
+  .clients-set{gap:42px;padding-right:42px}
+  .clients-set img{height:54px;max-width:190px}
+  .clients-set img[src*="client-anastasia"]{height:44px}
+  .clients-set img[src*="client-system-accountant"]{height:58px}
+  .clients-set img[src*="client-profit-club"]{height:60px}
+  .clients-set img[src*="client-skolkovo"]{height:62px}
+  .clients-set img[src*="client-worldbuilding"]{height:50px}
+  .clients-set img[src*="client-school-accountants"]{height:54px}
+  .clients-set img[src*="client-furshetnye-resheniya"]{height:54px}
+  .clients-set img[src*="client-nextera"]{height:50px}
 }
