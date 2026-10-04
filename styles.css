@@ -698,7 +698,12 @@ h1,h2,h3,.section-title,.drawer-head h2{
   line-height:.96;
   letter-spacing:-.055em;
   font-weight:300;
-  max-width:14ch;
+  max-width:none;
+  width:100%;
+}
+.clients-title span{
+  display:block;
+  white-space:nowrap;
 }
 .clients-marquee{
   overflow:hidden;
