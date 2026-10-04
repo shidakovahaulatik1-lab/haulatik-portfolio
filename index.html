@@ -9,9 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assetsportrait-main.png.png" fetchpriority="high" />
-  <link rel="stylesheet" href="styles.css?v=20261004-1150" />
+  <link rel="stylesheet" href="styles.css?v=20261004-1325" />
   <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" defer></script>
-  <script src="script.js?v=20261004-0218" defer></script>
+  <script src="script.js?v=20261004-1325" defer></script>
 </head>
 <body>
   <div class="page-grid" aria-hidden="true"></div>
@@ -137,6 +137,20 @@
         </article>
       </div>
     </section>
+    
+    <section class="clients-strip section" aria-labelledby="clients-title">
+      <div class="clients-head">
+        <div class="section-kicker">МОИ КЛИЕНТЫ</div>
+        <h2 class="clients-title" id="clients-title">КОМПАНИИ И ПРОЕКТЫ,<br>С КОТОРЫМИ Я РАБОТАЛА</h2>
+      </div>
+      <div class="clients-marquee" aria-label="Логотипы клиентов">
+        <div class="clients-track">
+          <img src="client-logos-strip.webp" alt="Логотипы клиентов" />
+          <img src="client-logos-strip.webp" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </section>
+
 
     <section class="about section" id="about">
       <div class="section-kicker">ОБО МНЕ</div>
@@ -262,6 +276,7 @@
         <label>Срок<input type="text" name="deadline"></label>
         <label class="field-wide">Расскажите о задаче<textarea name="message" rows="4" required></textarea></label>
         <button class="submit-btn" type="submit">ОТПРАВИТЬ ЗАЯВКУ <span>→</span></button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
       </form>
 
       <div class="contact-connect">
