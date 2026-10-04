@@ -251,24 +251,41 @@ const projectVideoObserver = new IntersectionObserver(entries => {
 qa(".project-video").forEach(video => projectVideoObserver.observe(video));
 
 const contactForm = q("#contactForm");
-contactForm.addEventListener("submit", e => {
+const formStatus = q("#formStatus");
+const formSubmitBtn = contactForm?.querySelector(".submit-btn");
+
+contactForm?.addEventListener("submit", async e => {
   e.preventDefault();
+  if (!contactForm.reportValidity()) return;
+
   const fd = new FormData(contactForm);
-  const lines = [
-    "Новая заявка с сайта",
-    "",
-    "Имя: " + (fd.get("name") || ""),
-    "Контакт: " + (fd.get("contact") || ""),
-    "Тип проекта: " + (fd.get("type") || ""),
-    "Количество слайдов: " + (fd.get("slides") || ""),
-    "Срок: " + (fd.get("deadline") || ""),
-    "",
-    "Задача:",
-    fd.get("message") || ""
-  ];
-  const subject = encodeURIComponent("Заявка с сайта-портфолио");
-  const body = encodeURIComponent(lines.join("\n"));
-  window.location.href = "mailto:shidakova.haulatik1@mail.ru?subject=" + subject + "&body=" + body;
+  fd.append("_subject", "Новая заявка с сайта-портфолио");
+  fd.append("_template", "table");
+  fd.append("_captcha", "false");
+  fd.append("_honey", "");
+
+  formStatus.className = "form-status";
+  formStatus.textContent = "Отправляю заявку…";
+  formSubmitBtn.disabled = true;
+
+  try {
+    const response = await fetch("https://formsubmit.co/ajax/shidakova.haulatik1@mail.ru", {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: fd
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok || data.success === false) throw new Error("send_failed");
+
+    formStatus.classList.add("is-success");
+    formStatus.textContent = "Спасибо! Заявка отправлена. Я свяжусь с вами в ближайшее время.";
+    contactForm.reset();
+  } catch (error) {
+    formStatus.classList.add("is-error");
+    formStatus.textContent = "Не удалось отправить заявку. Напишите мне в Telegram, WhatsApp или на e-mail ниже.";
+  } finally {
+    formSubmitBtn.disabled = false;
+  }
 });
 const projectHoverMedia = qa(".project-media");
 projectHoverMedia.forEach(media => {
