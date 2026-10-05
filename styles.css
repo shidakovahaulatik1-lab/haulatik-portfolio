@@ -691,15 +691,18 @@ h1,h2,h3,.section-title,.drawer-head h2{
   padding-bottom:90px;
   overflow:hidden;
 }
-.clients-head{padding:0 var(--pad) 42px}
+.clients-head{
+  padding:0 0 42px;
+  min-width:0;
+}
 .clients-title{
   margin:0;
+  width:100%;
+  max-width:100%;
   font-size:clamp(34px,4.8vw,78px);
   line-height:.96;
   letter-spacing:-.055em;
   font-weight:300;
-  max-width:none;
-  width:100%;
 }
 .clients-title span{
   display:block;
@@ -709,67 +712,77 @@ h1,h2,h3,.section-title,.drawer-head h2{
   overflow:hidden;
   border-top:1px solid var(--dark-line);
   border-bottom:1px solid var(--dark-line);
-  background:white;
+  background:transparent;
 }
 .clients-track{
   display:flex;
   align-items:center;
   width:max-content;
-  padding:28px 0;
-  animation:clientsMarquee 34s linear infinite;
+  padding:34px 0;
+  animation:marquee 32s linear infinite;
   will-change:transform;
 }
 .clients-set{
   display:flex;
   align-items:center;
-  gap:72px;
-  padding-right:72px;
+  gap:55px;
+  padding-right:55px;
   flex:0 0 auto;
 }
-.clients-set img{
+.client-logo{
+  width:220px;
+  height:82px;
+  flex:0 0 220px;
+  display:grid;
+  place-items:center;
+}
+.client-logo img{
   display:block;
   width:auto;
-  height:72px;
-  max-width:250px;
+  height:auto;
+  max-width:100%;
+  max-height:76px;
   object-fit:contain;
-  flex:0 0 auto;
 }
-.clients-set img[alt="Anastasia Sutygina"],
-.clients-set img[src*="client-anastasia"]{
-  height:58px;
+@media(hover:hover){
+  .clients-marquee:hover .clients-track{animation-play-state:paused}
 }
-.clients-set img[alt="Системный бухгалтер"],
-.clients-set img[src*="client-system-accountant"]{
-  height:76px;
+@media(max-width:760px){
+  .clients-strip{
+    padding-top:64px;
+    padding-bottom:64px;
+  }
+  .clients-head{
+    padding-bottom:28px;
+  }
+  .clients-title{
+    font-size:clamp(27px,9vw,40px);
+    line-height:1;
+    letter-spacing:-.05em;
+  }
+  .clients-title span{
+    white-space:normal;
+    overflow-wrap:normal;
+  }
+  .clients-track{
+    padding:26px 0;
+    animation-duration:28s;
+  }
+  .clients-set{
+    gap:34px;
+    padding-right:34px;
+  }
+  .client-logo{
+    width:170px;
+    height:66px;
+    flex-basis:170px;
+  }
+  .client-logo img{
+    max-width:100%;
+    max-height:60px;
+  }
 }
-.clients-set img[alt="Клуб Профит"],
-.clients-set img[src*="client-profit-club"]{
-  height:78px;
-}
-.clients-set img[alt="Сколково"],
-.clients-set img[src*="client-skolkovo"]{
-  height:82px;
-}
-.clients-set img[alt="Worldbuilding"],
-.clients-set img[src*="client-worldbuilding"]{
-  height:66px;
-}
-.clients-set img[alt="Школа бухгалтеров Ольги Красновой"],
-.clients-set img[src*="client-school-accountants"]{
-  height:70px;
-}
-.clients-set img[alt="Фуршетные решения"],
-.clients-set img[src*="client-furshetnye-resheniya"]{
-  height:70px;
-}
-.clients-set img[alt="Nextera"],
-.clients-set img[src*="client-nextera"]{
-  height:64px;
-}
-.clients-marquee:hover .clients-track{animation-play-state:paused}
-@keyframes clientsMarquee{
-  to{transform:translateX(-50%)}
-}
+
 .form-status{
   grid-column:1/-1;
   margin:0;
